@@ -4,7 +4,7 @@ DApp 演示网站：[https://faucet.binschool.app](https://faucet.binschool.app)
 
 DApp 截图：
 
- <img src="./public/images/faucet.png" align="center" /> 
+ <img src="./public/images/faucet.png" align="center" style="width: 480px; height: auto;"/> 
 
 
 ## 项目介绍
