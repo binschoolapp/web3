@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 项目名称
+Ylem 测试链水龙头
 
-## Getting Started
+## 项目介绍
+Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
 
-First, run the development server:
+项目前端使用 Next.js 框架和 Tailwind CSS 开发、
 
+项目后端使用 golang 编写，位于 backend 目录，它只有一个文件，提供了一个 api，用于把用户提交的签名数据，转给链端的智能合约。
+
+项目链端是一个是使用 solidity 编写的智能合约，用于申领测试币。
+
+## 编译部署
+链端智能合约使用 Remix 编译部署。
+
+后端使用 goland 编译，配合 nginx，提供 api 服务。
+
+前端使用 vscode 运行调试：
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm run start
+```
+编译：
+```bash
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 部署
+编译后的文件位于 dist 目录中。
+将 dist/server/pages/ 的文件，放置在 nginx root 目录下。
+将 dist/static/ 下的文件，放置在 nginx root 目录下的 /_next/static/ 目录下。
+将 public/images/ 下的文件，放置在 nginx root 目录下的 /images/ 目录下。
