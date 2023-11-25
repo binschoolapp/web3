@@ -3,7 +3,7 @@
 ## 项目介绍
 Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
 
-项目前端使用 Next.js 框架和 Tailwind CSS 开发、
+项目前端使用 Next.js 框架和 Tailwind CSS 开发。
 
 项目后端使用 golang 编写，位于 backend 目录，它只有一个文件，提供了一个 api，用于把用户提交的签名数据，转给链端的智能合约。
 
@@ -14,11 +14,20 @@ Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊�
 
 后端使用 goland 编译，配合 nginx，提供 api 服务。
 
-前端使用 vscode 运行：
+前端使用 vscode 编写，下载项目后，需要首先安装依赖包：
+
+```bash
+npm install
+```
+
+运行：
+
 ```bash
 npm run start
 ```
+
 编译：
+
 ```bash
 npm run build
 ```
