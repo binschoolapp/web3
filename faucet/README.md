@@ -48,3 +48,7 @@ npm run build
 - 将 dist/static/ 下的文件，放置在 nginx root 目录下的 /_next/static/ 目录下。
 
 - 将 public/images/ 下的文件，放置在 nginx root 目录下的 /images/ 目录下。
+
+
+### 联系方式
+微信：bkra50  Twitter: [BinSchoolApp](https://twitter.com/BinSchoolApp)
