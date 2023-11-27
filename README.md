@@ -9,7 +9,7 @@
 Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
 
 ### 联系方式
-微信：<span style="color:gree;">bkra50</span>  Twitter: [BinSchoolApp](https://twitter.com/BinSchoolApp) BiliBili：[坡县泽宾](https://space.bilibili.com/2112923943)
+微信：<span style="color:gree;">bkra50</span>     Twitter: [BinSchoolApp](https://twitter.com/BinSchoolApp)      BiliBili：[坡县泽宾](https://space.bilibili.com/2112923943)
 
 ### 学习资源
 
