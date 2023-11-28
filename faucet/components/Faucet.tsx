@@ -4,7 +4,7 @@ import contractABI from "../contract/abi.json";
 
 const Faucet = () => {
   const chainIdYlem = "0x2c66d"; // 链ID：181869
-  const contractAddress = "0x3e4678e6377Dc26419B4FE0EF030a1B2aB1464C9"; // 合约地址
+  const contractAddress = "0x8d0f010e3aCeFf4275450E5650519362cF6F8BDB"; // 合约地址
   const [account, setAccount] = useState("");
   const [balance, setBalance] = useState("0");
   const [faucetBalance, setFaucetBalance] = useState("0");
@@ -204,6 +204,7 @@ const Faucet = () => {
     url += "&v=" + v;
     try {
       const response = await fetch(url);
+      console.log(response)
       if (response && response.status == 200) {
         const result = await response.json();
         return result;

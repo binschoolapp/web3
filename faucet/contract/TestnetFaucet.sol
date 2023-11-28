@@ -29,17 +29,17 @@ contract TestnetFaucet is Ownable {
     }
 
     // get nonce of the specified receiver address
-    function nonce(address receiver) public view returns(uint256) {
+    function nonce(address receiver) external view returns(uint256) {
         return nonces[receiver];
     }
     
     // get balance of the current contract
-    function balance() public view returns(uint256) {
+    function balance() external view returns(uint256) {
         return address(this).balance;
     }
 
     // claim token from the airdrop
-    function claim(address receiver, uint8 v, bytes32 r, bytes32 s) public {
+    function claim(address receiver, uint8 v, bytes32 r, bytes32 s) external onlyOwner{
         require(receiver != address(0), "receiver is zero");
         require(block.timestamp - claimed[receiver] >= 1 days, "only one claim per day");
 

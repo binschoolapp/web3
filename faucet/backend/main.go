@@ -27,9 +27,10 @@ const (
 const (
 	DefaultHttpAddressFaucet     = ":8189"
 	DefaultBlockUrlFaucet      = "http://testnet.ylem.network"
-	DefaultContractAddressFaucet = "0x3e4678e6377Dc26419B4FE0EF030a1B2aB1464C9"
+	DefaultContractAddressFaucet = "0x8d0f010e3aCeFf4275450E5650519362cF6F8BDB"
 	DefaultPrivateKeyFaucet      = "<private key>"
 )
+
 
 func Claim(c *gin.Context) {
 	receiver := strings.TrimSpace(c.Query("receiver"))
@@ -73,8 +74,36 @@ func Claim(c *gin.Context) {
 	contractABI, err := abi.JSON(strings.NewReader(`
 [
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "claim",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
 	{
@@ -117,6 +146,37 @@ func Claim(c *gin.Context) {
 	},
 	{
 		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [],
 		"name": "balance",
 		"outputs": [
 			{
@@ -126,41 +186,6 @@ func Claim(c *gin.Context) {
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "receiver",
-				"type": "address"
-			},
-			{
-				"internalType": "uint8",
-				"name": "v",
-				"type": "uint8"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "r",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "s",
-				"type": "bytes32"
-			}
-		],
-		"name": "claim",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "clean",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -194,32 +219,9 @@ func Claim(c *gin.Context) {
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
-]`))
+]
+`))
 
 	if err != nil {
 		log.Println("fail to parse abi: ", err)
@@ -228,7 +230,6 @@ func Claim(c *gin.Context) {
 		c.JSON(http.StatusOK, response)
 		return
 	}
-
 
 	contractAddress := common.HexToAddress(DefaultContractAddressFaucet)
 	client, err := ethclient.Dial(DefaultBlockUrlFaucet)
@@ -322,8 +323,6 @@ func Claim(c *gin.Context) {
 	response.Message = "success"
 	c.JSON(http.StatusOK, response)
 }
-
-
 
 func main() {
 	app := gin.Default()
