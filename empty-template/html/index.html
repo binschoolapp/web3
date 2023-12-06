@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>合约测试空模板</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div style="text-align: center; padding: 5px;">
+      <h2>合约测试空模板</h2>
+    </div>
+
+    <div style="text-align: center;">
+      <button onclick="connectWallet()" style="padding: 10px 25px; width: 200px;">Connect Wallet</button>
+    </div>
+
+    <div id="account" style="text-align: center; padding: 20px; font-weight: 600;">
+    </div>
+
+    <div style="text-align: center;">
+      <button onclick="callContract()" style="padding: 10px 25px; width: 200px;">Call Contract</button>
+    </div>
+
+    <div id="result" style="text-align: center; padding : 20px; font-weight: 600;">
+    </div>
+
+    <script>
+      // contract address
+      let contractAddress = "0x3EA9E160242234eE589645BAAe9370397C5a41D6"; // 测试链合约地址
+
+      // contract abi
+      let contractABI = [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "x",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "y",
+              "type": "uint256"
+            }
+          ],
+          "name": "add",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "name",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ];
+      
+      async function connectWallet() {
+        // check if MetaMask is installed 
+        if(typeof window.ethereum === undefined) {
+          alert("Please install MetaMask first");
+          return;
+        }
+        // open a wallet account
+        let accounts = await window.ethereum.request({method:"eth_requestAccounts"});
+        if (accounts.length === 0){
+          alert("No wallet account available");
+          return;
+        }
+        // display current account
+        document.getElementById("account").innerText = "Account: " + accounts[0];
+      }
+
+      async function callContract() {
+        // check if MetaMask is installed 
+        if(typeof window.ethereum === undefined) {
+          alert("Please install MetaMask first");
+          return;
+        }
+
+        // open a wallet account
+        let accounts = await window.ethereum.request({method:"eth_requestAccounts"});
+        if (accounts.length === 0){
+          alert("No wallet account available");
+          return;
+        }
+        // display current account
+        document.getElementById("account").innerText = "Account: " + accounts[0];
+       
+        // create a rpc provider
+        let provider = new ethers.providers.Web3Provider(window.ethereum);
+        // create a contract
+        let contract = new ethers.Contract(contractAddress, contractABI, provider.getSigner())
+        // call contract method: name
+        let result = await contract.add(1,5);
+        // display result
+        document.getElementById("result").innerText = "Result: " + result;
+      }
+    </script>
+  </body>
+</html>

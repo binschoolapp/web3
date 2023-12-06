@@ -8,6 +8,10 @@
 
 Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
 
+**3. Uniswap v2 hardhat 测试脚本**： [项目地址](https://github.com/binschoolapp/web3/tree/main/uniswap)
+
+Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
+
 ### 联系方式
 
 微信：<span style="color:green;">bkra50</span>
