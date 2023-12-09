@@ -17,13 +17,13 @@ DApp 截图：
 
 前端使用 vscode 编写，下载项目后，需要首先安装依赖包。
 
-### 安装：
+### 安装
 
 ```bash
 npm install
 ```
 
-### 运行：
+### 运行
 
 ```bash
 npm run start
@@ -31,7 +31,7 @@ npm run start
 
 运行后，可以在浏览器中查看效果，默认链接为：[http://localhost:3000](http://localhost:3000)
 
-### 编译：
+### 编译
 
 ```bash
 npm run build
