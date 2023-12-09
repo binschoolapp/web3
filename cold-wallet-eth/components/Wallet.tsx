@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 const Wallet = () => {
   const [account, setAccount] = useState("");
   const [privateKey, setprivateKey] = useState("");
-  const [tPrivateKeyPretty, setPrivateKeyPretty] = useState("");
+  const [privateKeyPretty, setPrivateKeyPretty] = useState("");
 
   const createAccount = () => {
     const randomWallet = ethers.Wallet.createRandom();
@@ -44,7 +44,7 @@ const Wallet = () => {
             <div><span className="text-highlight whitespace-normal break-words"><strong>{privateKey}</strong></span>
             </div>
             <div className="w-full">格式化私钥：</div>
-            <div><span className="text-highlight"><strong>{tPrivateKeyPretty}</strong></span>
+            <div><span className="text-highlight"><strong>{privateKeyPretty}</strong></span>
             </div>
             </>
           )}
