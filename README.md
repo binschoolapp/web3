@@ -1,16 +1,24 @@
 # Web3 实战项目
 
-**1. 冷钱包生成器**： [项目地址](https://github.com/binschoolapp/web3/tree/main/cold-wallet)
+**1. ETH冷钱包生成器**： [项目地址](https://github.com/binschoolapp/web3/tree/main/cold-wallet-eth)
 
-【冷钱包】用于离线保存大额加密资产，通常不与任何智能合约或外部资源进行互动，防止资产被窃取。
+【ETH冷钱包】用于离线保存大额以太币加密资产，不与任何智能合约或外部资源进行互动，私钥从不触网，防止资产被窃取。
 
-**2. Ylem 测试链水龙头**： [项目地址](https://github.com/binschoolapp/web3/tree/main/faucet)
+**2. BTC冷钱包生成器**： [项目地址](https://github.com/binschoolapp/web3/tree/main/cold-wallet-btc)
+
+【BTC冷钱包】用于离线保存大额比特币资产，私钥从不触网，防止资产被窃取。
+
+**3. Ylem 测试链水龙头**： [项目地址](https://github.com/binschoolapp/web3/tree/main/faucet)
 
 Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
 
-**3. Uniswap v2 hardhat 测试脚本**： [项目地址](https://github.com/binschoolapp/web3/tree/main/uniswap)
+**4. 智能合约测试模板**： [项目地址](https://github.com/binschoolapp/web3/tree/main/empty-template)
 
-Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊、BSC上的智能合约，交易确认时间 3 秒。
+用于创建一个测试智能合约的空白项目，提供了两种方式。
+
+**5. Uniswap v2 hardhat 测试脚本**： [项目地址](https://github.com/binschoolapp/web3/tree/main/uniswap)
+
+使用 Hardhat 对 Uniswap v2 合约进行测试的脚本。
 
 ### 联系方式
 

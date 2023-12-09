@@ -4,8 +4,8 @@
 
 用于创建一个测试智能合约的空白项目，提供了两种方式：
 
-- 1. 使用 Next.js 框架
-- 2. 只使用 html 和 js
+- 使用 Next.js 框架
+- 只使用 html 和 js
 
 其中，只使用 html 和 js 的模板位于文件 html/index.html。
 
