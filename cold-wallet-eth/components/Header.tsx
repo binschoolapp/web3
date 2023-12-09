@@ -9,7 +9,7 @@ const Header = () => {
             ></div>
           </a>
           <div className="flex-1 text-center text-2xl overflow-hidden whitespace-nowrap text-highlight">
-          冷钱包生成器
+          ETH冷钱包生成器
           </div>
         </div>
       </header>

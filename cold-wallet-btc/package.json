@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "name": "faucet",
+  "scripts": {
+    "start": "next dev",
+    "build": "next build"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "clean-webpack-plugin": "^4.0.0",
+    "install": "^0.13.0",
+    "next": "^12.1.5",
+    "postcss": "^8.4.27",
+    "react": "^18.2.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^3.3.3",
+    "bip32": "^4.0.0",
+    "bitcoin-address": "^0.3.0",
+    "bitcoinjs-lib": "^6.1.5",
+    "ecpair": "^2.1.0",
+    "tiny-secp256k1": "^2.2.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "no-undef": "off",
+      "no-restricted-globals": "off",
+      "no-unused-vars": "off"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "20.10.0",
+    "@types/react": "18.2.20",
+    "typescript": "5.1.6"
+  }
+}

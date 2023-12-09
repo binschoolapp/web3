@@ -1,15 +1,13 @@
-# 冷钱包生成器
-
-DApp 演示网站：[https://binschool.app/coldwallet](https://binschool.app/coldwallet)。
+# BTC冷钱包生成器
 
 DApp 截图：
 
- <img src="./public/images/code-wallet.png" align="center" style="width: 480px; height: auto;"/> 
+ <img src="./public/images/cold-wallet-btc.png" align="center" style="width: 480px; height: auto;"/> 
 
 
 ## 项目介绍
 
-【冷钱包】用于离线保存大额加密资产，通常不与任何智能合约或外部资源进行互动，防止资产被窃取。
+【BTC冷钱包】用于离线保存大额比特币资产，私钥从不触网，防止资产被窃取。
 
 【热钱包】与【冷钱包】相对应，用于日常支付，或者与外界进行频繁互动，一般会存放小额资产。当需要充钱的时候，由冷钱包进行转账。
 
@@ -28,6 +26,8 @@ npm install
 ```bash
 npm run start
 ```
+
+运行后，可以在浏览器中查看效果，默认链接为：[http://localhost:3000](http://localhost:3000)
 
 编译：
 
