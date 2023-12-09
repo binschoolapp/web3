@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className='flex flex-col min-h-screen'>
       <Head>
-        <title>合约测试空模板</title>
+        <title>智能合约测试模板</title>
       </Head>
       <Main/>
   </div>
