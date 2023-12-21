@@ -1,5 +1,10 @@
 # 以太坊测试链水龙头
 
+DApp 截图：
+
+ <img src="./public/images/ylem-faucet.png" align="center" style="width: 480px; height: auto;"/> 
+
+
 ## 项目介绍
 
 前端使用 Next.js 框架开发。
