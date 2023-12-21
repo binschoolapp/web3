@@ -4,7 +4,7 @@ import contractABI from "../contract/abi.json";
 
 const Faucet = () => {
   const chainIdYlem = "0x2c66d"; // 链ID：181869
-  const contractAddress = "0x8d0f010e3aCeFf4275450E5650519362cF6F8BDB"; // 合约地址
+  const contractAddress = "0x3e70c24D98c8FEa3b2c3Adb799075df09f6dE050"; // 合约地址
   const [account, setAccount] = useState("");
   const [balance, setBalance] = useState("0");
   const [faucetBalance, setFaucetBalance] = useState("0");

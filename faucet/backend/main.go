@@ -4,6 +4,12 @@ import (
 	"context"
 	"crypto/ecdsa"
 	"encoding/hex"
+	"log"
+	"math/big"
+	"net/http"
+	"strconv"
+	"strings"
+
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
@@ -11,11 +17,6 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/gin-gonic/gin"
-	"log"
-	"math/big"
-	"net/http"
-	"strconv"
-	"strings"
 )
 
 const (
@@ -26,11 +27,10 @@ const (
 
 const (
 	DefaultHttpAddressFaucet     = ":8189"
-	DefaultBlockUrlFaucet      = "http://testnet.ylem.network"
-	DefaultContractAddressFaucet = "0x8d0f010e3aCeFf4275450E5650519362cF6F8BDB"
+	DefaultBlockUrlFaucet        = "http://testnet.ylem.network"
+	DefaultContractAddressFaucet = "0x3e70c24D98c8FEa3b2c3Adb799075df09f6dE050"
 	DefaultPrivateKeyFaucet      = "<private key>"
 )
-
 
 func Claim(c *gin.Context) {
 	receiver := strings.TrimSpace(c.Query("receiver"))
@@ -44,9 +44,9 @@ func Claim(c *gin.Context) {
 	}
 
 	response := struct {
-		Code int `json:"code"`
-		Message string `json:"message"`
-		Data interface{} `json:"data"`
+		Code    int         `json:"code"`
+		Message string      `json:"message"`
+		Data    interface{} `json:"data"`
 	}{}
 
 	privateKey, err := crypto.HexToECDSA(DefaultPrivateKeyFaucet)
