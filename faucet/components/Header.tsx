@@ -9,8 +9,9 @@ const Header = () => {
             ></div>
           </a>
           <div className="flex-1 text-center text-2xl overflow-hidden whitespace-nowrap text-highlight">
-          以太坊测试链
+          以太坊测试链 <div className="text-sm text-blue-500"><a href="https://github.com/binschoolapp/web3/tree/main/faucet" target="_blank">查看开源代码</a></div>
           </div>
+          
         </div>
       </header>
   );
