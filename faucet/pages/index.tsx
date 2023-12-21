@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <div className='flex flex-col min-h-screen'>
       <Head>
-        <title>Ylem 测试链水龙头</title>
+        <title>以太坊测试链</title>
         <meta name="keywords" content="Web3,区块链,智能合约,Solidity"/>
-        <meta name="description" content="BinSchool提供Web3编程技术，包括区块链、智能合约、Solidity等。"/>
+        <meta name="description" content="BinSchool 提供 Web3 编程技术，包括区块链、智能合约、Solidity等。"/>
       </Head>
       <Header/>
       <Faucet/>

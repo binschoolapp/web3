@@ -71,7 +71,7 @@ const Faucet = () => {
         method: "eth_chainId" 
       });
       if (chainIdMask === chainIdYlem) {
-        alert("Ylem 测试链已启用，可去领取测试币");
+        alert("Ylem 测试链已启用，可去领取测试 tokens");
         return;
       }
     } catch (error) {
@@ -236,9 +236,9 @@ const Faucet = () => {
           </div>
         </div>
         <div className="mx-auto p-4 bg-white shadow-md rounded-lg mt-[20px] leading-[2em]">
-          <div className="mb-2 text-green overflow-wrap">为了防止浪费和滥用，每地址每天可以领取 1 ETH 测试币，并需要签名来验证身份。</div>
+          <div className="mb-2 text-green overflow-wrap">为了防止浪费和滥用，每地址每天可以领取 1 ETH 测试tokens，并需要签名来验证身份。</div>
           <div className='w-full text-center'>
-            <button className="w-[280px] px-4 py-2 my-2 button" onClick={claimToken}>领取 Ylem 测试币
+            <button className="w-[280px] px-4 py-2 my-2 button" onClick={claimToken}>领取 Ylem tokens
             </button>
           </div>
         </div>

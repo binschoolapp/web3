@@ -9,7 +9,7 @@ const Header = () => {
             ></div>
           </a>
           <div className="flex-1 text-center text-2xl overflow-hidden whitespace-nowrap text-highlight">
-          Ylem 测试链水龙头
+          以太坊测试链
           </div>
         </div>
       </header>
