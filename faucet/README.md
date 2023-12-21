@@ -4,6 +4,9 @@ DApp 截图：
 
  <img src="./public/images/ylem-faucet.png" align="center" style="width: 480px; height: auto;"/> 
 
+DApp 地址：
+
+[https://faucet.binschool.app](https://faucet.binschool.app)
 
 ## 项目介绍
 
