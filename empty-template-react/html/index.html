@@ -1,13 +1,15 @@
 <html>
   <head>
-    <title>合约测试空模板</title>
+    <title>合约测试模板</title>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="text/javascript"></script>
   </head>
   <body>
     <div style="text-align: center; padding: 5px;">
-      <h2>合约测试空模板</h2>
+      <h2>合约测试模板</h2>
     </div>
-
+    <div style="text-align: center; padding-top: -5px; padding-bottom: 8px; font-size: 14px;">
+      <a href="https://faucet.binschool.app" target="_blank">切换到测试链</a>
+    </div>
     <div style="text-align: center;">
       <button onclick="connectWallet()" style="padding: 10px 25px; width: 200px;">Connect Wallet</button>
     </div>
@@ -24,10 +26,10 @@
 
     <script>
       // contract address
-      let contractAddress = "0x3EA9E160242234eE589645BAAe9370397C5a41D6"; // 测试链合约地址
+      const contractAddress = "0x777C05c2740c21Af2A91DeC027C989199BB3c313"; 
 
       // contract abi
-      let contractABI = [
+      const contractABI = [
         {
           "inputs": [
             {
