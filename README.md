@@ -20,6 +20,12 @@ Ylem 测试链是一条兼容 EVM 的高性能区块链，用于测试以太坊�
 
 使用 Hardhat 对 Uniswap v2 合约进行测试的脚本。
 
+**6. 默克尔树生成器**： [项目地址](https://github.com/binschoolapp/web3/tree/main/merkle)
+
+默克尔树生成器是一个纯 js 和 html 文件，没有使用任何框架。
+
+本项目可用于制作 merkle tree 的根哈希值和验证路径。
+
 ### 联系方式
 
 微信：<span style="color:green;">bkra50</span>
