@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+  <title>MerkleTree BinSchool</title>
+</head>
+<body>
+
+  <div class="header">
+    <a href="https://binschool.app" class="logo hide-logo">
+        <div class="logo-container"></div>
+    </a>
+    <div class="title">MerkleTree Creator</div>
+  </div>
+
+  <div class="hidden">
+    <details open>
+      <summary>Input ▾</summary>
+      <form id="form">
+        <div>
+          <label>Leaves <small>(input json array or newline separated)</small></label>
+          <textarea id="input" rows="10">
+[
+  "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
+  "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+  "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+  "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB"
+]
+          </textarea>
+        </div>
+        <div>
+          <label>Hash function</label>
+          <div>
+            <input type="radio" name="hash" value="sha256" id="sha256">
+            <label for="sha256">SHA-256</label>
+            <input type="radio" name="hash" value="keccak256" id="keccak256" checked>
+            <label for="keccak256">Keccak-256</label>
+          </div>
+        </div>
+        <div>
+          <label>Options</label>
+          <div>
+            <input type="checkbox" name="option" value="hashLeaves" id="hashLeaves" checked>
+            <label for="hashLeaves">hashLeaves</label>
+            <input type="checkbox" name="option" value="sortLeaves" id="sortLeaves">
+            <label for="sortLeaves">sortLeaves</label>
+            <input type="checkbox" name="option" value="sortPairs" id="sortPairs" checked>
+            <label for="sortPairs">sortPairs</label>
+            <input type="checkbox" name="option" value="duplicateOdd" id="duplicateOdd">
+            <label for="duplicateOdd">duplicateOdd</label>
+            <input type="checkbox" name="option" value="isBitcoinTree" id="isBitcoinTree">
+            <label for="isBitcoinTree">isBitcoinTree</label>
+            <input type="checkbox" name="option" value="fillDefaultHash" id="fillDefaultHash">
+            <label for="fillDefaultHash">fillDefaultHash</label>
+          </div>
+        </div>
+        <div id="fillDefaultHashView" style="display:none">
+          <label>Fill default hash</label>
+          <small>
+            <a href='#' id="addressZero">addressZero</a>
+            <a href='#' id="hashAddressZero">hash(addressZero)</a>
+          </small>
+          <input type="text" id="fillDefaultHashValue" />
+        </div>
+        <div>
+          <button type="submit" class="button">Compute</button>
+        </div>
+      </form>
+    </details>
+  </div>
+
+  <div class="hidden">
+    <details open>
+      <summary>Proof ▾</summary>
+      <form id="proofForm">
+        <div>
+          <label>Leaf</label>
+          <div>
+            <select id="leaveSelect"></select>
+          </div>
+        </div>
+        <div>
+          <label>Proof</label>
+          <pre id="proof"></pre>
+        </div>
+      </form>
+    </details>
+  </div>
+
+  <div class="hidden">
+    <details open>
+      <summary>Verify ▾</summary>
+      <form id="verifyForm">
+        <label>Proof</label>
+        <div>
+          <textarea id="verifyProof" rows="3"></textarea>
+        </div>
+        <label>Leaf</label>
+        <div>
+          <input type="text" id="verifyLeaf" />
+        </div>
+        <label>Root</label>
+        <div>
+          <input type="text" id="verifyRoot" />
+        </div>
+        <div>
+          <button type="submit" class="button">Verify</button>
+        </div>
+        <label>Verified</label>
+        <div>
+          <pre id="verified"></pre>
+        </div>
+      </form>
+    </details>
+  </div>
+
+  <div class="hidden">
+    <details open>
+      <summary>Output ▾</summary>
+      <div id="output">
+        <div>
+          <label>Root</label>
+          <pre id="root"></pre>
+        </div>
+        <div>
+          <label>Leaves</label>
+          <pre id="leaves"></pre>
+        </div>
+        <div>
+          <label>Layers</label>
+          <pre id="layers"></pre>
+        </div>
+        <div>
+          <label>Flat Layers</label>
+          <pre id="flatLayers"></pre>
+        </div>
+        <div>
+          <label>Tree</label>
+          <pre id="tree"></pre>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <script src="static/js/keccak256.js"></script>
+  <script src="static/js/sha256.min.js"></script>
+  <script src="static/js/merkletree.js"></script>
+  <script src="static/js/main.js"></script>
+
+  <style>
+    .body-container {
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        padding: 0 20px;
+    }
+
+    .content {
+        flex: 1 1 0%;
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        background-color:#f4f4f4;
+    }
+
+    .header{
+        display:flex;
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-bottom:10px;
+    }
+    .hidden {
+      overflow: hidden;
+    }
+
+    @media handheld,only screen and (min-width: 640px) {
+      .hide-logo {display: block!important;}
+    }
+
+    .logo {
+        background-repeat:no-repeat;
+        background-position:left top;
+        background-size: cover;
+        width: 160px;
+        height: 35px;
+        margin-top: 10px;
+        margin-left: 20px;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        display:none;
+        background-image:url(https://static.binschool.app//images/logo.png);
+    }
+    .title {
+        flex: 1 1 0%;
+        text-align:center;
+        font-size:1.5rem;
+        line-height:60px;
+        color:#dc2626;
+    }
+    .button {
+      width: 280px;
+      color: #FFF;
+      background-color: #67C23A;
+      border-color: #67C23A;
+      cursor: pointer;
+      border: 1px solid #DCDFE6;
+      text-align: center;
+      font-weight: 500;
+      margin: 20px 0 20px 20px;
+      padding: 12px 10px;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+    .button:hover {
+      background-color: #55A23A;
+    }
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 1px #666;
+      transform: translateY(4px);
+    }
+    
+    form {
+      display: block;
+      border: 1px dashed black;
+      padding: 0.2rem;
+    }
+    label {
+      display: inline-block;
+    }
+    textarea {
+      width: 98%;
+    }
+    input[type="text"] {
+      width: 98%;
+    }
+
+    details {
+      margin-bottom: 2rem;
+    }
+    details > summary {
+      list-style: none;
+      cursor: pointer;
+    }
+    details > summary::marker {
+      display: none;
+    }
+  </style>
+</body>
+</html>
