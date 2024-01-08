@@ -6,7 +6,7 @@ DApp 截图：
 
 DApp 地址：
 
-[https://faucet.binschool.app](https://faucet.binschool.app)
+[https://faucet.binlabs.app](https://faucet.binlabs.app)
 
 ## 项目介绍
 
