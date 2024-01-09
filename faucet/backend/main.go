@@ -20,9 +20,9 @@ import (
 )
 
 const (
-	SuccessFaucet = 0
-	ErrorFaucet   = 1
-	ErrorExceed   = 2
+	Success     = 0
+	Error       = 1
+	ErrorExceed = 2
 )
 
 const (
@@ -52,7 +52,7 @@ func Claim(c *gin.Context) {
 	privateKey, err := crypto.HexToECDSA(DefaultPrivateKeyFaucet)
 	if err != nil {
 		log.Println("fail to load private key: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to load private key"
 		c.JSON(http.StatusOK, response)
 		return
@@ -62,7 +62,7 @@ func Claim(c *gin.Context) {
 	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
 	if !ok {
 		log.Println("fail to load public key ")
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to load public key"
 		c.JSON(http.StatusOK, response)
 		return
@@ -225,7 +225,7 @@ func Claim(c *gin.Context) {
 
 	if err != nil {
 		log.Println("fail to parse abi: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to load public key"
 		c.JSON(http.StatusOK, response)
 		return
@@ -235,7 +235,7 @@ func Claim(c *gin.Context) {
 	client, err := ethclient.Dial(DefaultBlockUrlFaucet)
 	if err != nil {
 		log.Println(err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to dial ethclient"
 		c.JSON(http.StatusOK, response)
 		return
@@ -244,7 +244,7 @@ func Claim(c *gin.Context) {
 	nonce, err := client.PendingNonceAt(context.Background(), account)
 	if err != nil {
 		log.Println(err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to get nonce"
 		c.JSON(http.StatusOK, response)
 		return
@@ -262,7 +262,7 @@ func Claim(c *gin.Context) {
 	data, err := contractABI.Pack("claim", receiverAddress, uint8(val), rBytes, sBytes)
 	if err != nil {
 		log.Println("fail to pack abi: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to pack abi"
 		c.JSON(http.StatusOK, response)
 		return
@@ -283,7 +283,7 @@ func Claim(c *gin.Context) {
 	gasPrice, err := client.SuggestGasPrice(context.Background())
 	if err != nil {
 		log.Println("fail to suggest GasPrice: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to suggest GasPrice"
 		c.JSON(http.StatusOK, response)
 		return
@@ -303,7 +303,7 @@ func Claim(c *gin.Context) {
 	signedTx, err := types.SignTx(tx, types.NewEIP155Signer(big.NewInt(181869)), privateKey)
 	if err != nil {
 		log.Println("fail to sign tx: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to sign tx"
 		c.JSON(http.StatusOK, response)
 		return
@@ -312,14 +312,14 @@ func Claim(c *gin.Context) {
 	err = client.SendTransaction(context.Background(), signedTx)
 	if err != nil {
 		log.Println("fail to send tx: ", err)
-		response.Code = ErrorFaucet
+		response.Code = Error
 		response.Message = "fail to send tx"
 		c.JSON(http.StatusOK, response)
 		return
 	}
 
 	s = signedTx.Hash().Hex()
-	response.Code = SuccessFaucet
+	response.Code = Success
 	response.Message = "success"
 	c.JSON(http.StatusOK, response)
 }
